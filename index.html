@@ -1,0 +1,301 @@
+```html
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>শুভ জন্মদিন মৌমিতা ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ভাসমান হার্ট -->
+    <div class="floating-hearts">
+        <span>❤️</span>
+        <span>💕</span>
+        <span>💗</span>
+        <span>💖</span>
+        <span>✨</span>
+        <span>🌸</span>
+        <span>❤️</span>
+        <span>💕</span>
+    </div>
+
+
+    <!-- ১. Welcome -->
+    <section id="welcome" class="screen active">
+
+        <div class="card">
+
+            <div class="big-heart">❤️</div>
+
+            <h1>হেই মৌমিতা! 🥰</h1>
+
+            <p>
+                আজকের দিনটা একটু অন্যরকম। ✨
+            </p>
+
+            <p>
+                তোমার জন্য একটা ছোট্ট<br>
+                <b>Birthday Surprise</b> তৈরি করা হয়েছে! 🎂💖
+            </p>
+
+            <button onclick="startGame()">
+                শুরু করি 💕
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ২. Mission 1 -->
+    <section id="level1" class="screen">
+
+        <div class="card">
+
+            <h2>🎯 মিশন ১</h2>
+
+            <p>
+                এই জায়গার মধ্যে লুকিয়ে থাকা<br>
+                <b>❤️ বিশেষ হার্টটা</b> খুঁজে বের করো!
+            </p>
+
+            <div class="heart-area">
+
+                <span class="fake-heart">🌸</span>
+                <span class="fake-heart">💖</span>
+                <span class="fake-heart">✨</span>
+                <span class="hidden-heart" onclick="heartFound()">❤️</span>
+                <span class="fake-heart">💕</span>
+                <span class="fake-heart">🌸</span>
+                <span class="fake-heart">💗</span>
+                <span class="fake-heart">✨</span>
+
+            </div>
+
+            <p class="hint">
+                💡 Hint: ভালো করে খুঁজে দেখো...
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ৩. Mission 2 -->
+    <section id="level2" class="screen">
+
+        <div class="card">
+
+            <h2>🧠 মিশন ২</h2>
+
+            <p id="memoryText">
+                এই ইমোজিগুলো ভালো করে মনে রাখো! 👀
+            </p>
+
+            <div id="memoryEmoji" class="memory-emoji">
+                🌸 🎂 💕 🎁
+            </div>
+
+            <button id="memoryButton" onclick="showMemoryQuestion()">
+                মনে আছে! 😎
+            </button>
+
+
+            <div id="memoryQuestion" class="hidden">
+
+                <h3>
+                    কোন ইমোজিটা এখানে ছিল না? 🤔
+                </h3>
+
+                <button onclick="memoryAnswer('🌸')">🌸</button>
+                <button onclick="memoryAnswer('🎂')">🎂</button>
+                <button onclick="memoryAnswer('🎈')">🎈</button>
+                <button onclick="memoryAnswer('🎁')">🎁</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ৪. Mission 3 -->
+    <section id="level3" class="screen">
+
+        <div class="card">
+
+            <h2>😂 মিশন ৩</h2>
+
+            <p class="big-question">
+                মৌমিতা যদি বলে<br>
+                <b>“আমি রাগ করিনি।” 😌</b><br>
+                তাহলে আসলে কী বোঝায়?
+            </p>
+
+            <button onclick="funnyAnswer()">
+                A. সত্যিই রাগ করেনি 😇
+            </button>
+
+            <button onclick="funnyAnswer()">
+                B. একটু রাগ করেছে 😒
+            </button>
+
+            <button onclick="funnyAnswer()">
+                C. অনেক রাগ করেছে 😡
+            </button>
+
+            <button onclick="funnyAnswer()">
+                D. এখনই সাবধান হও! 😂
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ৫. Final Question -->
+    <section id="level4" class="screen">
+
+        <div class="card">
+
+            <h2>💖 শেষ প্রশ্ন</h2>
+
+            <p class="big-question">
+                এই বিশেষ Birthday Surprise<br>
+                কার জন্য? 🎁
+            </p>
+
+            <button onclick="finalAnswer()">
+                🌸 মৌমিতা
+            </button>
+
+            <button onclick="finalAnswer()">
+                ❤️ Birthday Girl
+            </button>
+
+            <button onclick="finalAnswer()">
+                👑 আমাদের স্পেশাল মানুষ
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ৬. Secret Code -->
+    <section id="secret" class="screen">
+
+        <div class="card">
+
+            <h2>🔐 Secret Mission</h2>
+
+            <p>
+                Surprise Unlock করার জন্য<br>
+                Secret Code লিখো। 😏
+            </p>
+
+            <div class="code">
+                <span>M</span>
+                <span>O</span>
+                <span>U</span>
+                <span>M</span>
+                <span>I</span>
+                <span>T</span>
+                <span>A</span>
+            </div>
+
+            <input
+                id="secretInput"
+                type="text"
+                placeholder="Secret Code লিখো..."
+                autocomplete="off"
+            >
+
+            <button onclick="checkCode()">
+                🔓 Unlock
+            </button>
+
+            <p id="codeMessage"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ৭. Gift -->
+    <section id="gift" class="screen">
+
+        <div class="card">
+
+            <h2>🎁 তোমার Surprise তৈরি!</h2>
+
+            <p>
+                বাক্সটার ওপর ক্লিক করো... 👀❤️
+            </p>
+
+            <div
+                id="giftBox"
+                class="gift-box"
+                onclick="openGift()"
+            >
+
+                <div class="gift-lid"></div>
+
+                <div class="gift-body"></div>
+
+                <div class="ribbon vertical"></div>
+
+                <div class="ribbon horizontal"></div>
+
+            </div>
+
+            <p>
+                🎀 খুলতে ক্লিক করো 🎀
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ৮. Video -->
+    <section id="videoScreen" class="screen">
+
+        <div class="card">
+
+            <h1>🎂 শুভ জন্মদিন মৌমিতা! ❤️</h1>
+
+            <p>
+                তোমার জন্য ছোট্ট একটা ভিডিও উপহার। 🥰
+            </p>
+
+            <div class="drive-video">
+
+                <iframe
+                    id="driveVideo"
+                    src=""
+                    allow="autoplay"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+            <h2>
+                অনেক অনেক শুভেচ্ছা! 💖🎉
+            </h2>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
