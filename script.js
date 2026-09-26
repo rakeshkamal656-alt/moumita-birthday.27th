@@ -1,3 +1,4 @@
+alert("JavaScript কাজ করছে!");
 ```javascript
 // ================================
 // 🎂 মৌমিতার Birthday Website
