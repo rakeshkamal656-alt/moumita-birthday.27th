@@ -1,0 +1,432 @@
+```css id="r8v2km"
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Noto Sans Bengali", "Nirmala UI", sans-serif;
+    background:
+        radial-gradient(circle at top left, #ffd6e7, transparent 35%),
+        radial-gradient(circle at bottom right, #ffc1dc, transparent 35%),
+        linear-gradient(135deg, #ffedf5, #ffd3e5);
+    overflow-x: hidden;
+    color: #5b2140;
+}
+
+/* Floating Hearts */
+.floating-hearts span {
+    position: fixed;
+    bottom: -50px;
+    font-size: 25px;
+    opacity: 0.6;
+    animation: floatUp 8s linear infinite;
+    z-index: 0;
+}
+
+.floating-hearts span:nth-child(1) { left: 5%; animation-delay: 0s; }
+.floating-hearts span:nth-child(2) { left: 18%; animation-delay: 2s; }
+.floating-hearts span:nth-child(3) { left: 32%; animation-delay: 4s; }
+.floating-hearts span:nth-child(4) { left: 48%; animation-delay: 1s; }
+.floating-hearts span:nth-child(5) { left: 62%; animation-delay: 3s; }
+.floating-hearts span:nth-child(6) { left: 75%; animation-delay: 5s; }
+.floating-hearts span:nth-child(7) { left: 87%; animation-delay: 2.5s; }
+.floating-hearts span:nth-child(8) { left: 95%; animation-delay: 6s; }
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* Screens */
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 30px 15px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.screen.active {
+    display: flex;
+    animation: screenIn 0.6s ease;
+}
+
+@keyframes screenIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* Card */
+.card {
+    width: min(520px, 95vw);
+    padding: 35px 25px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(150, 40, 90, 0.18);
+    backdrop-filter: blur(10px);
+}
+
+.card h1 {
+    font-size: clamp(30px, 7vw, 48px);
+    margin-bottom: 18px;
+    color: #d62f76;
+}
+
+.card h2 {
+    font-size: clamp(27px, 6vw, 38px);
+    margin-bottom: 20px;
+    color: #d62f76;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+
+/* Big Heart */
+.big-heart {
+    font-size: 75px;
+    animation: heartbeat 1.3s infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+
+/* Buttons */
+button {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    margin: 12px 0;
+    padding: 15px 18px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ff4f93, #d82f72);
+    color: white;
+    font-size: 17px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(216, 47, 114, 0.25);
+    transition: 0.25s;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+
+/* Mission 1 */
+.heart-area {
+    min-height: 270px;
+    margin: 25px 0;
+    padding: 20px;
+    border-radius: 25px;
+    background: #fff0f6;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+.heart-area span {
+    font-size: 38px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.heart-area span:hover {
+    transform: scale(1.3);
+}
+
+.hidden-heart {
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+.hint {
+    color: #a34a73;
+    font-size: 15px !important;
+}
+
+
+/* Mission 2 */
+.memory-emoji {
+    font-size: 48px;
+    padding: 25px 10px;
+    margin: 25px 0;
+    background: #fff0f6;
+    border-radius: 20px;
+    letter-spacing: 8px;
+}
+
+#memoryQuestion button {
+    display: inline-block;
+    width: 45%;
+    margin: 7px;
+    font-size: 30px;
+    background: #ff79ad;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Big Question */
+.big-question {
+    font-size: 21px !important;
+    line-height: 2 !important;
+}
+
+
+/* Secret Code */
+.code {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 25px 0;
+}
+
+.code span {
+    width: 42px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffe0ec;
+    border-radius: 12px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #d62f76;
+    animation: codePop 0.5s ease forwards;
+}
+
+@keyframes codePop {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ffc1d8;
+    border-radius: 15px;
+    outline: none;
+    text-align: center;
+    font-size: 18px;
+    font-family: inherit;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    border-color: #e9367c;
+}
+
+#codeMessage {
+    font-weight: bold;
+    color: #d62f76;
+}
+
+
+/* Gift Box */
+.gift-box {
+    position: relative;
+    width: 190px;
+    height: 170px;
+    margin: 45px auto 30px;
+    cursor: pointer;
+    animation: giftFloat 1.8s ease-in-out infinite;
+}
+
+@keyframes giftFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.gift-body {
+    position: absolute;
+    width: 170px;
+    height: 120px;
+    bottom: 0;
+    left: 10px;
+    background: linear-gradient(135deg, #ff5b9b, #d72d72);
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(190, 30, 90, 0.25);
+}
+
+.gift-lid {
+    position: absolute;
+    width: 190px;
+    height: 45px;
+    top: 20px;
+    left: 0;
+    background: linear-gradient(135deg, #ff77ad, #e33a7d);
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.ribbon {
+    position: absolute;
+    background: #ffd34d;
+    z-index: 3;
+}
+
+.vertical {
+    width: 25px;
+    height: 150px;
+    left: 82px;
+    top: 25px;
+}
+
+.horizontal {
+    width: 180px;
+    height: 22px;
+    left: 5px;
+    top: 55px;
+    border-radius: 5px;
+}
+
+
+/* Video */
+.drive-video {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 25px 0;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #111;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.drive-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .screen {
+        padding: 20px 10px;
+    }
+
+    .card {
+        padding: 28px 18px;
+        border-radius: 23px;
+    }
+
+    .card p {
+        font-size: 16px;
+    }
+
+    .heart-area {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        min-height: 230px;
+    }
+
+    .heart-area span {
+        font-size: 30px;
+    }
+
+    .memory-emoji {
+        font-size: 35px;
+        letter-spacing: 3px;
+    }
+
+    #memoryQuestion button {
+        width: 42%;
+        font-size: 25px;
+    }
+
+    .code {
+        gap: 4px;
+    }
+
+    .code span {
+        width: 36px;
+        height: 43px;
+        font-size: 19px;
+    }
+
+    .gift-box {
+        transform: scale(0.9);
+    }
+
+    .gift-box:hover {
+        transform: scale(0.95);
+    }
+}
+```
