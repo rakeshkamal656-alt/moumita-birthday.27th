@@ -1,19 +1,18 @@
-alert("JavaScript কাজ করছে!");
-```javascript
-// ================================
-// 🎂 মৌমিতার Birthday Website
-// ================================
+// ==========================================
+// 🎂 মৌমিতার Birthday Surprise Website
+// ==========================================
 
-const DRIVE_VIDEO_ID =
-    "1c4y-jZe_V0VNQ4Es21mCz-o9e13K3OST";
+// 🎥 Google Drive Video ID
+const DRIVE_VIDEO_ID = "1c4y-jZe_V0VNQ4Es21mCz-o9e13K3OST";
 
 
-// সব Screen
-const screens = document.querySelectorAll(".screen");
+// ==========================================
+// 📱 Screen System
+// ==========================================
 
-
-// Screen পরিবর্তন
 function showScreen(id) {
+
+    const screens = document.querySelectorAll(".screen");
 
     screens.forEach(function(screen) {
         screen.classList.remove("active");
@@ -28,14 +27,16 @@ function showScreen(id) {
 }
 
 
-// ছোট্ট Sound
+// ==========================================
+// 🔊 Sound
+// ==========================================
+
 function playSound(type) {
 
     try {
 
         const AudioContext =
-            window.AudioContext ||
-            window.webkitAudioContext;
+            window.AudioContext || window.webkitAudioContext;
 
         if (!AudioContext) return;
 
@@ -47,21 +48,15 @@ function playSound(type) {
         oscillator.connect(gain);
         gain.connect(audio.destination);
 
-
         if (type === "success") {
-
             oscillator.frequency.value = 700;
-
-        } else if (type === "wrong") {
-
-            oscillator.frequency.value = 180;
-
-        } else {
-
-            oscillator.frequency.value = 450;
-
         }
-
+        else if (type === "wrong") {
+            oscillator.frequency.value = 180;
+        }
+        else {
+            oscillator.frequency.value = 450;
+        }
 
         oscillator.type = "sine";
 
@@ -75,39 +70,34 @@ function playSound(type) {
             audio.currentTime + 0.2
         );
 
-
         oscillator.start();
 
         oscillator.stop(
             audio.currentTime + 0.2
         );
 
-    } catch (error) {
-
+    }
+    catch (error) {
         console.log(error);
-
     }
 }
 
 
-
-// =================================
-// ❤️ শুরু
-// =================================
+// ==========================================
+// ❤️ START BUTTON
+// ==========================================
 
 function startGame() {
 
     playSound("click");
 
     showScreen("level1");
-
 }
 
 
-
-// =================================
+// ==========================================
 // ❤️ Mission 1
-// =================================
+// ==========================================
 
 function heartFound() {
 
@@ -115,30 +105,25 @@ function heartFound() {
 
     createConfetti();
 
-
     alert(
         "ইয়েসসস! ❤️ তুমি বিশেষ হার্টটা খুঁজে পেয়েছো!"
     );
-
 
     setTimeout(function() {
 
         showScreen("level2");
 
     }, 500);
-
 }
 
 
-
-// =================================
+// ==========================================
 // 🧠 Mission 2
-// =================================
+// ==========================================
 
 function showMemoryQuestion() {
 
     playSound("click");
-
 
     const emoji =
         document.getElementById("memoryEmoji");
@@ -154,40 +139,29 @@ function showMemoryQuestion() {
 
 
     if (emoji) {
-
         emoji.style.display = "none";
-
     }
-
 
     if (text) {
-
         text.innerText =
             "এবার বলো তো... কোন ইমোজিটা ছিল না? 🤔";
-
     }
-
 
     if (button) {
-
         button.style.display = "none";
-
     }
-
 
     if (question) {
-
         question.classList.remove("hidden");
-
     }
-
 }
 
 
+// ==========================================
+// 🧠 Memory Answer
+// ==========================================
 
-// Memory Answer
 function memoryAnswer(answer) {
-
 
     if (answer === "🎈") {
 
@@ -195,11 +169,9 @@ function memoryAnswer(answer) {
 
         createConfetti();
 
-
         alert(
             "একদম ঠিক! 😎🧠 তোমার স্মৃতি কিন্তু বেশ ভালো!"
         );
-
 
         setTimeout(function() {
 
@@ -207,49 +179,41 @@ function memoryAnswer(answer) {
 
         }, 500);
 
-
-    } else {
+    }
+    else {
 
         playSound("wrong");
-
 
         alert(
             "উফফ! 😜 ভুল হয়েছে! আবার চেষ্টা করো।"
         );
-
     }
-
 }
 
 
-
-// =================================
+// ==========================================
 // 😂 Mission 3
-// =================================
+// ==========================================
 
 function funnyAnswer() {
 
     playSound("success");
 
-
     alert(
         "হাহাহা! 😂 আমরা দুজনেই জানি আসল উত্তরটা কী!"
     );
-
 
     setTimeout(function() {
 
         showScreen("level4");
 
     }, 500);
-
 }
 
 
-
-// =================================
-// 💖 শেষ প্রশ্ন
-// =================================
+// ==========================================
+// 💖 Final Question
+// ==========================================
 
 function finalAnswer() {
 
@@ -258,17 +222,14 @@ function finalAnswer() {
     createConfetti();
 
     showScreen("secret");
-
 }
 
 
-
-// =================================
+// ==========================================
 // 🔐 Secret Code
-// =================================
+// ==========================================
 
 function checkCode() {
-
 
     const input =
         document.getElementById("secretInput");
@@ -277,7 +238,9 @@ function checkCode() {
         document.getElementById("codeMessage");
 
 
-    if (!input || !message) return;
+    if (!input || !message) {
+        return;
+    }
 
 
     const code =
@@ -286,15 +249,12 @@ function checkCode() {
 
     if (code === "MOUMITA") {
 
-
         playSound("success");
 
         createConfetti();
 
-
         message.innerText =
             "🔓 সঠিক Code! Surprise খুলে গেছে! ❤️";
-
 
         setTimeout(function() {
 
@@ -302,33 +262,26 @@ function checkCode() {
 
         }, 1200);
 
-
-    } else {
-
+    }
+    else {
 
         playSound("wrong");
 
-
         message.innerText =
             "❌ Code ভুল! Hint: Birthday Girl-এর নাম 😜";
-
     }
-
 }
 
 
-
-// =================================
+// ==========================================
 // 🎁 Gift Box
-// =================================
+// ==========================================
 
 function openGift() {
-
 
     playSound("success");
 
     createConfetti();
-
 
     const gift =
         document.getElementById("giftBox");
@@ -340,12 +293,10 @@ function openGift() {
 
         gift.style.transform =
             "scale(1.25) rotate(5deg)";
-
     }
 
 
     setTimeout(function() {
-
 
         showScreen("videoScreen");
 
@@ -360,25 +311,19 @@ function openGift() {
                 "https://drive.google.com/file/d/" +
                 DRIVE_VIDEO_ID +
                 "/preview";
-
         }
 
-
     }, 1000);
-
 }
 
 
-
-// =================================
+// ==========================================
 // 🎉 Confetti
-// =================================
+// ==========================================
 
 function createConfetti() {
 
-
     const emojis = [
-
         "🎉",
         "🎊",
         "❤️",
@@ -387,16 +332,10 @@ function createConfetti() {
         "🌸",
         "🎂",
         "💖"
-
     ];
 
 
-    for (
-        let i = 0;
-        i < 45;
-        i++
-    ) {
-
+    for (let i = 0; i < 45; i++) {
 
         const confetti =
             document.createElement("div");
@@ -405,8 +344,7 @@ function createConfetti() {
         confetti.innerText =
             emojis[
                 Math.floor(
-                    Math.random() *
-                    emojis.length
+                    Math.random() * emojis.length
                 )
             ];
 
@@ -421,9 +359,7 @@ function createConfetti() {
             "-40px";
 
         confetti.style.fontSize =
-            15 +
-            Math.random() * 25 +
-            "px";
+            15 + Math.random() * 25 + "px";
 
         confetti.style.zIndex =
             "99999";
@@ -435,13 +371,10 @@ function createConfetti() {
             "transform 3s linear, opacity 3s";
 
 
-        document.body.appendChild(
-            confetti
-        );
+        document.body.appendChild(confetti);
 
 
         setTimeout(function() {
-
 
             confetti.style.transform =
                 "translateY(" +
@@ -450,10 +383,7 @@ function createConfetti() {
                 Math.random() * 720 +
                 "deg)";
 
-
-            confetti.style.opacity =
-                "0";
-
+            confetti.style.opacity = "0";
 
         }, 50);
 
@@ -463,49 +393,36 @@ function createConfetti() {
             confetti.remove();
 
         }, 3200);
-
     }
-
 }
 
 
-
-// =================================
-// ⌨️ Enter চাপলে Code Check
-// =================================
+// ==========================================
+// ⌨️ Enter Key
+// ==========================================
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
 
-
         const input =
-            document.getElementById(
-                "secretInput"
-            );
+            document.getElementById("secretInput");
 
 
         if (input) {
-
 
             input.addEventListener(
                 "keydown",
                 function(event) {
 
-
-                    if (
-                        event.key === "Enter"
-                    ) {
+                    if (event.key === "Enter") {
 
                         checkCode();
-
                     }
 
                 }
             );
-
         }
 
     }
 );
-```
